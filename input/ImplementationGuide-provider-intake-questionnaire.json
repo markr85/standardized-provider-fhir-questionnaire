@@ -1,0 +1,33 @@
+{
+  "resourceType": "ImplementationGuide",
+  "id": "provider-intake-questionnaire",
+  "url": "http://example.org/fhir/provider-intake-questionnaire/ImplementationGuide/provider-intake-questionnaire",
+  "version": "0.1.0",
+  "name": "ProviderIntakeQuestionnaireIG",
+  "title": "Provider Intake Questionnaires",
+  "status": "draft",
+  "publisher": "Provider Intake Questionnaire Initiative",
+  "packageId": "example.fhir.provider-intake-questionnaire",
+  "fhirVersion": ["4.0.1"],
+  "definition": {
+    "resource": [
+      {
+        "reference": {
+          "reference": "Questionnaire/AdultMedicalHistoryQuestionnaire"
+        }
+      }
+    ],
+    "page": {
+      "nameUrl": "index.html",
+      "title": "Provider Intake Questionnaires",
+      "generation": "markdown",
+      "page": [
+        {
+          "nameUrl": "profiles.html",
+          "title": "Profiles",
+          "generation": "markdown"
+        }
+      ]
+    }
+  }
+}
