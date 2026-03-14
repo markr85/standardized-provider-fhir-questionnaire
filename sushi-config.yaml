@@ -1,0 +1,14 @@
+id: provider-intake-questionnaire
+canonical: http://example.org/fhir/provider-intake-questionnaire
+name: ProviderIntakeQuestionnaireIG
+title: Provider Intake Questionnaires
+status: draft
+version: 0.1.0
+fhirVersion: 4.0.1
+
+publisher:
+  name: Provider Intake Questionnaire Initiative
+
+dependencies:
+  hl7.fhir.us.core:
+    version: 7.0.0
