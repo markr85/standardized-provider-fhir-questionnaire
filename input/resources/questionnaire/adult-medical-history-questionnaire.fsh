@@ -1,82 +1,178 @@
 {
-  "linkId": "patient-demographics",
-  "text": "Demographics",
-  "type": "group",
+  "resourceType": "Questionnaire",
+  "status": "active",
+  "title": "Patient Intake Questionnaire",
+  "name": "patient-intake",
+  "url": "https://medplum.com/Questionnaire/patient-intake-questionnaire-example",
+
+  "subjectType": ["Patient"],
+
   "item": [
     {
-      "linkId": "first-name",
-      "text": "First Name",
-      "type": "string",
-      "required": true
+      "linkId": "patient-demographics",
+      "text": "Demographics",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "first-name",
+          "text": "First Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "linkId": "middle-name",
+          "text": "Middle Name",
+          "type": "string"
+        },
+        {
+          "linkId": "last-name",
+          "text": "Last Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "linkId": "dob",
+          "text": "Date of Birth",
+          "type": "date"
+        },
+
+        {
+          "linkId": "ssn",
+          "text": "Social Security Number (if requested)",
+          "type": "string"
+        },
+
+      ]
     },
+
     {
-      "linkId": "middle-name",
-      "text": "Middle Name",
-      "type": "string"
+      "linkId": "allergies",
+      "text": "Allergies",
+      "type": "group",
+      "repeats": true,
+      "item": [
+        {
+          "linkId": "allergy-substance",
+          "text": "Substance",
+          "type": "choice",
+          "answerValueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1186.8"
+        },
+        {
+          "linkId": "allergy-reaction",
+          "text": "Reaction",
+          "type": "string"
+        },
+        {
+          "linkId": "allergy-onset",
+          "text": "Onset",
+          "type": "dateTime"
+        }
+      ]
     },
+
     {
-      "linkId": "last-name",
-      "text": "Last Name",
-      "type": "string",
-      "required": true
+      "linkId": "medical-history",
+      "text": "Medical History",
+      "type": "group",
+      "repeats": true,
+      "item": [
+        {
+          "linkId": "medical-history-problem",
+          "text": "Problem",
+          "type": "choice",
+          "answerValueSet": "http://hl7.org/fhir/us/core/ValueSet/us-core-condition-code"
+        },
+        {
+          "linkId": "medical-history-clinical-status",
+          "text": "Status",
+          "type": "choice",
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/condition-clinical"
+        },
+        {
+          "linkId": "medical-history-onset",
+          "text": "Onset",
+          "type": "dateTime"
+        }
+      ]
     },
+
     {
-      "linkId": "dob",
-      "text": "Date of Birth",
-      "type": "date"
+      "linkId": "coverage-information",
+      "text": "Coverage Information",
+      "type": "group",
+      "repeats": true,
+      "item": [
+        {
+          "linkId": "insurance-provider",
+          "text": "Insurance Provider",
+          "type": "reference",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/fhir-types",
+                    "code": "Organization"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "subscriber-id",
+          "text": "Subscriber ID",
+          "type": "string"
+        },
+        {
+          "linkId": "relationship-to-subscriber",
+          "text": "Relationship to Subscriber",
+          "type": "choice",
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/subscriber-relationship"
+        }
+      ]
     },
+
     {
-      "linkId": "street",
-      "text": "Street",
-      "type": "string"
+      "linkId": "social-determinants-of-health",
+      "text": "Social Determinants of Health",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "housing-instability",
+          "text": "Housing Stability",
+          "type": "choice",
+          "answerValueSet": "http://hl7.org/fhir/us/core/ValueSet/us-core-housing-instability"
+        },
+        {
+          "linkId": "education-level",
+          "text": "Highest Education Level",
+          "type": "choice",
+          "answerValueSet": "http://terminology.hl7.org/ValueSet/v3-EducationLevel"
+        },
+        {
+          "linkId": "tobacco-use",
+          "text": "Tobacco Use",
+          "type": "choice",
+          "answerValueSet": "http://hl7.org/fhir/us/core/ValueSet/us-core-smoking-status"
+        }
+      ]
     },
+
     {
-      "linkId": "city",
-      "text": "City",
-      "type": "string"
-    },
-    {
-      "linkId": "state",
-      "text": "State",
+      "linkId": "languages-spoken",
+      "text": "Languages Spoken",
       "type": "choice",
-      "answerValueSet": "http://hl7.org/fhir/us/core/ValueSet/us-core-usps-state"
+      "answerValueSet": "http://hl7.org/fhir/ValueSet/languages",
+      "repeats": true
     },
+
     {
-      "linkId": "zip",
-      "text": "Zip",
-      "type": "string"
-    },
-    {
-      "linkId": "phone",
-      "text": "Phone",
-      "type": "string"
-    },
-    {
-      "linkId": "phone-sms",
-      "text": "Phone (SMS)",
-      "type": "string"
-    },
-    {
-      "linkId": "email",
-      "text": "Email",
-      "type": "string"
-    },
-    {
-      "linkId": "ssn",
-      "text": "Social Security Number (if requested)",
-      "type": "string"
-    },
-    {
-      "linkId": "race",
-      "text": "Race",
+      "linkId": "preferred-language",
+      "text": "Preferred Language",
       "type": "choice",
-      "answerValueSet": "http://hl7.org/fhir/us/core/ValueSet/omb-race-category"
-    },
-    {
-      "linkId": "ethnicity",
-      "text": "Ethnicity",
-      "type": "choice",
-      "answerValueSet": "http://hl7.org/fhir/us/core/ValueSet/omb-ethnicity-category"
+      "answerValueSet": "http://hl7.org/fhir/ValueSet/languages"
     }
   ]
 }
